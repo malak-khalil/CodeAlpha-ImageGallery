@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/16566/16566085.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Photos</h1>
+        <div class="controls">
+            <button class="btn" id="new-album-btn">
+                <i class="fas fa-plus"></i> New Album
+            </button>
+            <button class="btn" id="theme-btn">
+                <i class="fas fa-moon"></i> Dark Mode
+            </button>
+        </div>
+    </div>
+
+    <button class="back-btn" id="back-btn">
+        <i class="fas fa-chevron-left"></i> Back to Albums
+    </button>
+
+    <div class="folders-container" id="folders-container"></div>
+
+    <div class="photos-container" id="photos-container"></div>
+
+    <div class="modal" id="new-album-modal">
+        <div class="modal-content">
+            <div class="modal-title">New Album</div>
+            <div class="form-group">
+                <label for="album-name">Album Name</label>
+                <input type="text" id="album-name" class="form-control" placeholder="Enter album name">
+            </div>
+            <div class="modal-actions">
+                <button class="btn" id="cancel-album-btn">Cancel</button>
+                <button class="btn" id="create-album-btn">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="add-photo-modal">
+        <div class="modal-content">
+            <div class="modal-title">Add Photo</div>
+            <div class="form-group">
+                <label for="photo-url">Photo URL</label>
+                <input type="text" id="photo-url" class="form-control" placeholder="Enter image URL">
+            </div>
+            <div class="form-group">
+                <label for="photo-caption">Caption</label>
+                <input type="text" id="photo-caption" class="form-control" placeholder="Enter caption">
+            </div>
+            <div class="modal-actions">
+                <button class="btn" id="cancel-photo-btn">Cancel</button>
+                <button class="btn" id="add-photo-btn">Add Photo</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="edit-photo-modal">
+        <div class="modal-content">
+            <div class="modal-title">Edit Photo</div>
+            <div class="form-group">
+                <label for="edit-photo-url">Photo URL</label>
+                <input type="text" id="edit-photo-url" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="edit-photo-caption">Caption</label>
+                <input type="text" id="edit-photo-caption" class="form-control">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-red" id="delete-photo-btn">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+                <button class="btn" id="save-photo-btn">Save</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

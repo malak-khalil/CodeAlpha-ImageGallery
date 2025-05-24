@@ -1,0 +1,313 @@
+        :root {
+            --ios-bg: #f2f2f7;
+            --ios-card: #ffffff;
+            --ios-text: #1c1c1e;
+            --ios-blue: #007aff;
+            --ios-red: #ff3b30;
+            --ios-gray: #8e8e93;
+            --ios-folder: rgba(120, 120, 128, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--ios-bg);
+            color: var(--ios-text);
+            min-height: 100vh;
+            padding: 20px;
+            transition: background 0.3s ease;
+        }
+
+        body.dark-mode {
+            --ios-bg: #1c1c1e;
+            --ios-card: #2c2c2e;
+            --ios-text: #f2f2f7;
+            --ios-folder: rgba(120, 120, 128, 0.2);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .btn {
+            background: var(--ios-blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn i {
+            font-size: 16px;
+        }
+
+        .btn-red {
+            background: var(--ios-red);
+        }
+
+        .folders-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .folder {
+            background: var(--ios-folder);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .folder:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .folder-actions {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            gap: 5px;
+        }
+
+        .folder-action-btn {
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .folder-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 12px;
+            position: relative;
+        }
+
+        .folder-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--ios-card);
+            border-radius: 8px;
+        }
+
+        .folder-front {
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            background: var(--ios-card);
+            border-radius: 6px;
+            bottom: 0;
+            left: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .folder-front i {
+            font-size: 24px;
+            color: var(--ios-blue);
+        }
+
+        .folder-name {
+            text-align: center;
+            font-weight: 500;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .folder-count {
+            text-align: center;
+            font-size: 13px;
+            color: var(--ios-gray);
+        }
+
+        .photos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 2px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .photo {
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-actions {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: none;
+        }
+
+        .photo:hover .photo-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .photo-action-btn {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .back-btn {
+            display: none;
+            margin-bottom: 16px;
+            background: none;
+            border: none;
+            color: var(--ios-blue);
+            font-size: 16px;
+            cursor: pointer;
+            align-items: center;
+            gap: 6px;
+        }
+        .folder-action-btn[data-action="delete-album"] {
+            background: rgba(255, 59, 48, 0.3); 
+        }
+
+        .folder-action-btn[data-action="delete-album"]:hover {
+            background: rgba(255, 59, 48, 0.5);
+        }
+        .folder-action-btn[data-action="add-photo"]{
+           position: absolute;
+           top: 48.5px;
+           
+        }
+        .controls {
+            display: flex;
+            gap: 20px; 
+            margin-left: auto; 
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: var(--ios-card);
+            border-radius: 12px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: var(--ios-gray);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--ios-gray);
+            border-radius: 8px;
+            font-size: 16px;
+            background: var(--ios-card);
+            color: var(--ios-text);
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .folders-container {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
+            .photos-container {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
